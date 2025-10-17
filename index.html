@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartão Interativo - Moisés</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+  <body>
+
+    <main class="card-container">
+      <article class="card" aria-label="Cartão moises">
+          <img src="img/moises.jpg" alt="Foto do perfil" class="profile-img" />
+
+          <div class="info-block">
+            <h1>Desenvolvedor de sistema web</h1>
+            <p class="description">Faço criação de Sites, Portifólio, cartão interativo digital
+              planilhas eletrônicas, Cardápios digitais, Pagina de vendas, Cartão de visita interativo.
+            </p>
+          </div>
+
+          <div class="actions-secondary">
+            <button class="offline-title" type="button">
+              <span class="icon"></span>
+                <i class="fa-solid fa-qrcode"></i>
+              <span>Modo Offline</span>
+            </button>
+            
+            <button id="share-btn" type="button"><span>Compartilha Cartão</span></button>
+          </div>
+
+          <a href="contato.vcf" download class="btn-primary">Salvar na Agenda</a>
+                            <!-- Bloco do QRCode offline (inicia oculto) -->
+
+          <div id="offlinePanel" class="offline-panel" style="display: none;">
+            <h3 class="offline-title">Modo Offline</h3>
+            <p class="offline-subtitle">Acesse para salvar diretamente na agenda.</p>
+            <div class="offline-qrcode">
+              <a id="wifiLink" href="contato.vcf" target="_blank">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://cartaomoises.netlify.app&size=150x150"
+                    alt="QR Code para contato"
+                    id="wifiQRCode">
+              </a>
+            </div>
+          </div>
+
+                                        <!-- BOTOES COLORIDOS -->
+
+          <div class="icons-grid" role="list">
+            <a class="icon-action" href="tel:+5592981067373" aria-label="Ligar">
+              <img src="img/Ligar.png" alt="Ligar">
+              <p>Ligar</p>
+            </a>
+
+            <a class="icon-action" href="https://mail.google.com/mail/?view=cm&fs=1&to=mpm10433@gmail.com" target="_blank" rel="noopener noreferrer" 
+                aria-label="Email">
+                <img src="img/Email.png" alt="Email">
+                <p>Email</p>
+            </a>
+
+            <a class="icon-action" href="https://wa.me/+5592981067373" target="_blank" aria-label="WhatsApp">
+              <img src="img/whatsap.png" alt="WhatsApp">
+              <p>WhatsApp</p>
+            </a>
+
+            <a class="icon-action" href="https://maps.app.goo.gl/seJbrx6aA39pHj949" target="_blank" aria-label="Mapa">
+              <img src="img/maps.png" alt="Mapa">
+              <p>Mapa</p>
+            </a>
+          </div>
+
+
+
+          <div class="content-block">
+            <p class="footer-text">"Bem-vindo(a) ao meu espaço digital. Sou [Moisés], 
+              seu futuro parceiro em desenvolvimento web. Especializado em criar sites 
+              e aplicações que resolvem problemas e impulsionam negócios. Acredito que 
+              a tecnologia deve ser uma ferramenta de crescimento, e estou aqui para 
+              construir a sua. Vamos conversar!"...</p>
+          </div>
+
+          
+
+                                <!-- INICIO DA CLASSE extra-cards-list -->
+
+        <div class="extra-cards-list">
+
+                                          <!-- Botão Wi-Fi -->
+
+            <button class="extra-card" id="wifi-btn" type="button">
+            <i class="fa-solid fa-wifi"></i> Conectar-se no WiFi
+            </button>
+
+                                  <!-- Div do QR Code com imagem pronta e infos -->
+
+            <div id="wifi-qrcode" style="display: none; margin-top: 20px; justify-content:center; align-items:center; flex-direction:column;">
+                <img src="img/qrcodePMARQUES.jpeg" alt="QR Code Wi-Fi" />
+                <p>
+                <strong>Rede:</strong> PMARQUES<br>
+                <strong>Senha:</strong> 130697Le@@
+                </p>
+            </div>
+
+                <a class="extra-card" href="https://editevideomoises.netlify.app/" target="_blank">
+                 Minha página de vendas 
+                </a>
+
+                <a class="extra-card" href="https://www.facebook.com/melhorescenas123" target="_blank">
+                <i class="fa-brands fa-facebook"></i> Facebook
+                </a>
+
+                <a class="extra-card" href="https://www.instagram.com/learn_mind223/" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+            
+             <!-- Botão Pix -->
+            <button class="extra-card" id="pix-btn" type="button">
+              <i class="fa-solid fa-qrcode"></i> Pagamento Pix</button>
+
+            <!-- Div que mostra o QR Code -->
+            <div id="pix-qrcode" class="pix-container">
+              <img src="img/QRCODEMOISES.png" alt="QR Code Pix" class="pix-image">
+              <p>Escaneie o QR Code para realizar o pagamento via Pix</p>
+            </div>
+                                  <!-- AQUI ACABA O PIX -->
+
+                                  <!-- AQUI COMEÇA AS INFORMAÇÕES DO BANCO DE DADOS FIREBASE -->
+
+                            <!-- Botão Salvar na Agenda -->
+            <div class="extra-card">
+              <i class="fa-solid fa-user"></i>
+              <span>Contatos: <strong id="cartao-count">0</strong></span>
+            </div>
+
+            <div class="extra-card">
+              <a href="contato.vcf" download id="btn-agenda">Salvar na Agenda</a>
+            </div>
+                                    <!-- Badge de seguidores -->
+
+            <div class="extra-card">
+              <i class="fa-solid fa-user-plus"></i>
+              <button class="seguir-salvar" id="btn-seguir">Seguir</button>
+              <span>Seguidores: <strong id="seguidores-count">0</strong></span>
+            </div>
+
+                           <!-- Botão Salvar Contato -->
+
+                           
+            <div class="extra-card">
+              <i class="fa-solid fa-address-book"></i>
+              <button class="seguir-salvar" id="btn-salvar">Salvar contato</button>
+              <span>Contatos salvos: <strong id="contatos-count">0</strong></span>
+            </div>
+        </div>
+
+      </article>
+    </main>
+
+          <!-- BOTÃO EXTRA FIXO DESTACADO COM BOTÃO INTERNO E TEXTO -->
+        <div class="extra-card footer-highlight">
+          <button class="btn-troca" type="button">Trocar contato</button>
+          <div class="extra-text-container">
+            <span class="extra-text">Moisés</span>
+            <span class="extra-text extra-subtext">Troque contato comigo</span>
+          </div>
+        </div>
+          
+      <!-- //   Biblioteca QRCode -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>     
+  <script type="module" src="javascript.js"></script>
+  </body>
+</html>
